@@ -12,7 +12,7 @@ Summary:	A configuration system for Python applications
 Summary(pl.UTF-8):	System konfiguracji dla aplikacji w Pythonie.
 Name:		python-%{module}
 Version:	4.3.2
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries/Python
 Source0:	https://github.com/ipython/traitlets/archive/%{version}.tar.gz
@@ -35,6 +35,7 @@ BuildRequires:	python3-sphinx_rtd_theme
 # when using /usr/bin/env or other in-place substitutions
 #BuildRequires:	sed >= 4.0
 # replace with other requires if defined in setup.py
+Requires:	python-decorator
 Requires:	python-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -51,6 +52,7 @@ System konfiguracji dla aplikacji w Pythonie.
 Summary:	-
 Summary(pl.UTF-8):	-
 Group:		Libraries/Python
+Requires:	python3-decorator
 Requires:	python3-modules
 
 %description -n python3-%{module}
