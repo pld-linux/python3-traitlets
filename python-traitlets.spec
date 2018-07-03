@@ -12,7 +12,7 @@ Summary:	A configuration system for Python applications
 Summary(pl.UTF-8):	System konfiguracji dla aplikacji w Pythonie.
 Name:		python-%{module}
 Version:	4.3.2
-Release:	2
+Release:	3
 License:	BSD
 Group:		Libraries/Python
 Source0:	https://github.com/ipython/traitlets/archive/%{version}.tar.gz
