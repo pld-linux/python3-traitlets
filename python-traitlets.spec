@@ -10,7 +10,7 @@ Summary:	A configuration system for Python applications
 Summary(pl.UTF-8):	System konfiguracji dla aplikacji w Pythonie
 Name:		python-%{module}
 Version:	4.3.2
-Release:	4
+Release:	5
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://github.com/ipython/traitlets/releases
@@ -25,6 +25,7 @@ BuildRequires:	python-setuptools
 %if %{with tests}
 BuildRequires:	python-decorator
 BuildRequires:	python-enum34
+BuildRequires:	python-ipython_genutils
 BuildRequires:	python-mock
 BuildRequires:	python-pytest
 BuildRequires:	python-six
@@ -38,6 +39,7 @@ BuildRequires:	python3-decorator
 %if "%{py3_ver}" < "3.4"
 BuildRequires:	python3-enum34
 %endif
+BuildRequires:	python3-ipython_genutils
 BuildRequires:	python3-pytest
 BuildRequires:	python3-six
 %endif
@@ -80,15 +82,15 @@ atrybutów ze sprawdzaniem typów, dynamicznie wyliczanymi wartościami
 domyślnymi oraz wywołaniami wstecznym "przy zmianie".
 
 %package apidocs
-Summary:	%{module} API documentation
-Summary(pl.UTF-8):	Dokumentacja API %{module}
+Summary:	API documentation for traitlets module
+Summary(pl.UTF-8):	Dokumentacja API modułu traitlets
 Group:		Documentation
 
 %description apidocs
-API documentation for %{module}.
+API documentation for traitlets module.
 
 %description apidocs -l pl.UTF-8
-Dokumentacja API %{module}.
+Dokumentacja API modułu traitlets.
 
 %prep
 %setup -q -n %{module}-%{version}
@@ -123,6 +125,7 @@ rm -rf $RPM_BUILD_ROOT
 %py_install
 
 %py_postclean
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/traitlets/{tests,config/tests,utils/tests}
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/python-%{module}-%{version}
 cp -p examples/*.py $RPM_BUILD_ROOT%{_examplesdir}/python-%{module}-%{version}
@@ -130,6 +133,8 @@ cp -p examples/*.py $RPM_BUILD_ROOT%{_examplesdir}/python-%{module}-%{version}
 
 %if %{with python3}
 %py3_install
+
+%{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/traitlets/{tests,config/tests,utils/tests}
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/python3-%{module}-%{version}
 cp -p examples/*.py $RPM_BUILD_ROOT%{_examplesdir}/python3-%{module}-%{version}
