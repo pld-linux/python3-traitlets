@@ -10,7 +10,7 @@ Summary:	A configuration system for Python applications
 Summary(pl.UTF-8):	System konfiguracji dla aplikacji w Pythonie
 Name:		python-%{module}
 Version:	4.3.2
-Release:	5
+Release:	6
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://github.com/ipython/traitlets/releases
@@ -19,6 +19,9 @@ Source0:	https://github.com/ipython/traitlets/archive/%{version}.tar.gz
 # Source0-md5:	0b5b7986aef676d12f31a16cbbe3ed92
 Patch0:		%{name}-use-setuptools.patch
 URL:		https://traitlets.readthedocs.io/en/stable/
+%if %(locale -a | grep -q '^C\.utf8$'; echo $?)
+BuildRequires:	glibc-localedb-all
+%endif
 %if %{with python2}
 BuildRequires:	python-modules >= 1:2.7
 BuildRequires:	python-setuptools
@@ -101,6 +104,7 @@ Dokumentacja API modułu traitlets.
 %py_build
 
 %if %{with tests}
+LC_ALL=C.UTF-8 \
 %{__python} -m pytest traitlets
 %endif
 %endif
