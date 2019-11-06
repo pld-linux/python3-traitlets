@@ -9,14 +9,13 @@
 Summary:	A configuration system for Python applications
 Summary(pl.UTF-8):	System konfiguracji dla aplikacji w Pythonie
 Name:		python-%{module}
-Version:	4.3.2
-Release:	7
+Version:	4.3.3
+Release:	1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://github.com/ipython/traitlets/releases
-# TODO:		https://github.com/ipython/traitlets/archive/%{version}/%{module}-%{version}.tar.gz
-Source0:	https://github.com/ipython/traitlets/archive/%{version}.tar.gz
-# Source0-md5:	0b5b7986aef676d12f31a16cbbe3ed92
+Source0:	https://github.com/ipython/traitlets/archive/%{version}/%{module}-%{version}.tar.gz
+# Source0-md5:	7469c5aef78ced2eb7f7f19cdf1d9e87
 Patch0:		%{name}-use-setuptools.patch
 URL:		https://traitlets.readthedocs.io/en/stable/
 %if %(locale -a | grep -q '^C\.utf8$'; echo $?)
