@@ -32,7 +32,8 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 2.044
 %if %{with doc}
 BuildRequires:	python3-ipython_genutils
-BuildRequires:	python3-sphinx_rtd_theme
+BuildRequires:	python3-myst_parser
+BuildRequires:	python3-pydata_sphinx_theme
 BuildRequires:	sphinx-pdg-3
 %endif
 Requires:	python3-modules >= 1:3.8
@@ -74,6 +75,7 @@ Dokumentacja API modułu traitlets.
 %endif
 
 %if %{with doc}
+PYTHONPATH="$(pwd)" \
 %{__make} -C docs html \
 	SPHINXBUILD=sphinx-build-3
 %endif
